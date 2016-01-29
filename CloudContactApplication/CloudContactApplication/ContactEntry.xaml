@@ -1,0 +1,48 @@
+﻿<Page
+    x:Class="CloudContactApplication.ContactEntry"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CloudContactApplication"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel HorizontalAlignment="Center">
+            <TextBlock x:Name="headingTextBlock" 
+                       FontSize="20"
+                       Margin="0, 30, 0, 0"
+                       FontFamily="Century Gothic" 
+                       Text="Enter a New Contact...&#x0a;Save to the cloud"
+                       Padding="10">
+            </TextBlock>
+            <TextBox x:Name="nameTextBlock"
+                     PlaceholderText="Enter a Name"
+                     Width="250"
+                     Padding="10"
+                     Margin="0, 20, 0, 0">
+            </TextBox>
+            <TextBox x:Name="phoneTextBlock"
+                     PlaceholderText="Enter a Phone Number"
+                     Width="250"
+                     Padding="10"
+                     Margin="0, 10, 0, 0">
+            </TextBox>
+
+            <Button x:Name="submitButton" 
+                        Content="Submit"
+                        Margin="0, 10, 0, 0" 
+                        Width="100"
+                        Height="Auto"
+                        HorizontalAlignment="Left" />
+            <!--Click="submitButton_Click"/>-->
+            <Button x:Name="retrieveButton" 
+                        Content="Retrieve"
+                        HorizontalAlignment="Right"
+                        Margin="0, -35, 0, 0"
+                        Width="100"
+                        Height="Auto">
+            </Button>
+        </StackPanel>
+    </Grid>
+</Page>
