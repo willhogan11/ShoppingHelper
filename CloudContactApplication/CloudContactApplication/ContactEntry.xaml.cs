@@ -20,11 +20,48 @@ namespace CloudContactApplication
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
+    /// 
+
+    //public class CloudContact
+    //{
+    //    public int Id { get; set; }
+
+    //    [DataMember(Name = "nameTextBlock")]
+    //    public String Text { get; set; }
+
+    //    [DataMember(Name = "phoneTextBlock")]
+    //    public String Complete { get; set; }
+    //}
+
     public sealed partial class ContactEntry : Page
     {
         public ContactEntry()
         {
             this.InitializeComponent();
         }
+
+        private void submitButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            TextBlock nameDisplay;
+            nameDisplay = new TextBlock();
+            nameDisplay.FontSize = 50;
+            nameDisplay.Text = nameTextBlock.Text;
+            nameDisplay.HorizontalAlignment = HorizontalContentAlignment;
+        }
+
+        //private MobileServiceCollectionView<CloudContact> contactItems;
+        // private MobileServiceCollection<CloudContact, CloudContact> contactItems;
+
+        //private async void InsertContactItem(CloudContact cloudContact)
+        //{
+        //    await App.MobileService.GetTable<CloudContact>().InsertAsync(cloudContact);
+        //    contactItems.Add(cloudContact);
+        //}
+
+        //private void submitButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    var cloudContact = new CloudContact { Text = nameTextBlock.Text };
+        //    InsertContactItem(cloudContact);
+        //}
     }
 }
