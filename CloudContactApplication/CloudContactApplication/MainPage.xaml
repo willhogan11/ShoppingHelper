@@ -5,9 +5,36 @@
     xmlns:local="using:CloudContactApplication"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    Tapped="Page_Tapped">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <StackPanel VerticalAlignment="Center">
+            <Image x:Name="contactImage" 
+                Height="120"
+                   Margin="0, -120, 0, 0"
+                Source="Images/contact.png" />
+            <Image x:Name="downArrowImage" 
+                Height="80"
+                Margin="20"
+                Source="Images/downArrow.png" />
+            <Image x:Name="cloudImage" 
+                   Height="150"
+                   Source="Images/cloud.png" />
+        </StackPanel>
+        <StackPanel VerticalAlignment="Bottom"
+                    Padding="50">
+            <TextBlock x:Name="titleTextBlock" 
+                       HorizontalAlignment="Center"
+                       FontFamily="Century Gothic"
+                       FontSize="{StaticResource TextStyleExtraLargeFontSize}"
+                       Text="Cloud Contact App" />
+            <TextBlock x:Name="tapToBeginTextBlock" 
+                       HorizontalAlignment="Center"
+                       FontFamily="Century Gothic"
+                       Margin="0, 20, 0, 0"
+                       FontSize="20"
+                       Text="Tap to begin..." />
+        </StackPanel>
     </Grid>
 </Page>
