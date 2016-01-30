@@ -42,12 +42,27 @@ namespace CloudContactApplication
 
         private void submitButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            TextBlock nameDisplay;
-            nameDisplay = new TextBlock();
-            nameDisplay.FontSize = 50;
-            nameDisplay.Text = nameTextBlock.Text;
-            nameDisplay.HorizontalAlignment = HorizontalContentAlignment;
+            // Send to server code
         }
+
+        private void nameTextBlock_TextChanged(object sender, TextChangedEventArgs e)
+        {
+           outputContactName.Text = nameTextBlock.Text;
+        }
+
+        private void phoneTextBlock_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            outputContactPhone.Text = phoneTextBlock.Text.ToString();
+        }
+
+        private void emailTextBlock_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            outputContactEmail.Text = emailTextBlock.Text;
+        }
+
+
+
+
 
         //private MobileServiceCollectionView<CloudContact> contactItems;
         // private MobileServiceCollection<CloudContact, CloudContact> contactItems;

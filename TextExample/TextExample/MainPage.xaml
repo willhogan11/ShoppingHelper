@@ -1,0 +1,28 @@
+﻿<Page
+    x:Class="TextExample.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TextExample"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <TextBox x:Name="txtEntered"
+             HorizontalAlignment="Center"
+		     Margin="10,10,0,0"
+		     TextWrapping="Wrap"
+		     VerticalAlignment="Center"
+		     Width="120" TextChanged="TextBox_TextChanged" />
+        <Button x:Name="resultBtn"
+                Content="Display"
+                Width="120"
+                HorizontalAlignment="Center" 
+                Margin="0,150,0,0" Click="resultBtn_Click"/>
+        <TextBlock x:Name="resultBlock"
+                   Width="250"
+                   VerticalAlignment="Bottom"
+                   Margin="0, 0, 0, 150"
+                   TextWrapping="Wrap"/>
+    </Grid>
+</Page>
