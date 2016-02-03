@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CloudContactApplication
+namespace ShoppingHelper
 {
     public class Item
     {
