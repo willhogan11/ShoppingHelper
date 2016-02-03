@@ -7,7 +7,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using SQLite.Net.Attributes;
 
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -22,8 +21,8 @@ namespace CloudContactApplication
     public sealed partial class ContactEntry : Page
     {
 
-        string path;
-        SQLite.Net.SQLiteConnection conn;
+        //string path;
+        //SQLite.Net.SQLiteConnection conn;
 
         public ContactEntry()
         {
