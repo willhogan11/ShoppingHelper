@@ -1,8 +1,8 @@
 ﻿<Page
-    x:Class="CloudContactApplication.ContactEntry"
+    x:Class="ShoppingHelper.ContactEntry"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:CloudContactApplication"
+    xmlns:local="using:ShoppingHelper"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -18,18 +18,20 @@
             <TextBox x:Name="itemTextBlock"
                      PlaceholderText="Item Name"
                      Padding="10"
-                     Margin="0, 20, 0, 0" 
-                     TextChanged="itemNameTextBlock_TextChanged" />
+                     Margin="0, 20, 0, 0" />
+                     <!--TextChanged="itemNameTextBlock_TextChanged"--> <!--Testing Purposes--> 
             <TextBox x:Name="quantityTextBlock"
                      PlaceholderText="Quantity"
                      Padding="10"
-                     Margin="0, 10, 0, 0"
-                     TextChanged="itemQuantityTextBlock_TextChanged" />
+                     Margin="0, 10, 0, 0" />
+                     <!--TextChanged="itemQuantityTextBlock_TextChanged"--> <!--Testing Purposes-->
             <TextBox x:Name="priceTextBlock"
                      PlaceholderText="Price"
- 
                      Padding="10"
-                     Margin="0, 10, 0, 0" TextChanged="itemPriceTextBlock_TextChanged" />
+                     Margin="0, 10, 0, 0" />
+                     <!--TextChanged="itemPriceTextBlock_TextChanged"--> <!--Testing Purposes-->
+            <ListBox x:Name="retrieveData" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                       Width="Auto" Height="250" ItemsSource="{Binding}" Margin="0 20 0 0"/>
 
             <!-- This Dynamically Creates a Item Review for the User -->
             <TextBlock x:Name="outputItemName"
@@ -52,6 +54,7 @@
                 <AppBarButton x:Name="Add" Label="Add" Icon="Add" Tapped="Add_Tapped" />
                 <AppBarButton x:Name="Edit" Label="Edit" Icon="Edit" Tapped="Edit_Tapped" />
                 <AppBarButton x:Name="Delete" Label="Delete" Icon="Delete" Tapped="Delete_Tapped" />
+                <AppBarButton x:Name="goBack" Label="Back" Icon="Back" Tapped="goBack_Tapped" />
             </StackPanel>
         </AppBar>
     </Page.BottomAppBar>

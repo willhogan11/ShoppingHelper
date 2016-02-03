@@ -102,6 +102,9 @@
       <DependentUpon>ContactEntry.xaml</DependentUpon>
     </Compile>
     <Compile Include="Item.cs" />
+    <Compile Include="ListItems.xaml.cs">
+      <DependentUpon>ListItems.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -134,6 +137,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="ContactEntry.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ListItems.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

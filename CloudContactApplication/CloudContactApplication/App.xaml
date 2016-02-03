@@ -1,8 +1,8 @@
 ﻿<Application
-    x:Class="CloudContactApplication.App"
+    x:Class="ShoppingHelper.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:CloudContactApplication"
+    xmlns:local="using:ShoppingHelper"
     RequestedTheme="Light">
 
     <Application.Resources>
