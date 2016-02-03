@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+﻿using System.IO;
+using System.ServiceModel.Channels;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -12,6 +7,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -22,61 +18,55 @@ namespace CloudContactApplication
     /// </summary>
     /// 
 
-    //public class CloudContact
-    //{
-    //    public int Id { get; set; }
-
-    //    [DataMember(Name = "nameTextBlock")]
-    //    public String Text { get; set; }
-
-    //    [DataMember(Name = "phoneTextBlock")]
-    //    public String Complete { get; set; }
-    //}
-
     public sealed partial class ContactEntry : Page
     {
+
+        //string path;
+        //SQLite.Net.SQLiteConnection conn;
+
         public ContactEntry()
         {
             this.InitializeComponent();
+            path = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "db.sqlite");
+            conn = new SQLite.Net.SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), path);
+            conn.CreateTable<Message>();
         }
 
-        private void submitButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+
+        private void itemNameTextBlock_TextChanged(object sender, TextChangedEventArgs e)
         {
-            // Send to server code
+           outputItemName.Text = itemTextBlock.Text;
         }
 
-        private void nameTextBlock_TextChanged(object sender, TextChangedEventArgs e)
+        private void itemQuantityTextBlock_TextChanged(object sender, TextChangedEventArgs e)
         {
-           outputContactName.Text = nameTextBlock.Text;
+            outputItemQuantity.Text = quantityTextBlock.Text.ToString();
         }
 
-        private void phoneTextBlock_TextChanged(object sender, TextChangedEventArgs e)
+        private void itemPriceTextBlock_TextChanged(object sender, TextChangedEventArgs e)
         {
-            outputContactPhone.Text = phoneTextBlock.Text.ToString();
+            outputItemPrice.Text = priceTextBlock.Text;
         }
 
-        private void emailTextBlock_TextChanged(object sender, TextChangedEventArgs e)
+
+        private void Show_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            outputContactEmail.Text = emailTextBlock.Text;
+            
         }
 
+        private void Add_Tapped(object sender, TappedRoutedEventArgs e)
+        {
 
+        }
 
+        private void Edit_Tapped(object sender, TappedRoutedEventArgs e)
+        {
 
+        }
 
-        //private MobileServiceCollectionView<CloudContact> contactItems;
-        // private MobileServiceCollection<CloudContact, CloudContact> contactItems;
+        private void Delete_Tapped(object sender, TappedRoutedEventArgs e)
+        {
 
-        //private async void InsertContactItem(CloudContact cloudContact)
-        //{
-        //    await App.MobileService.GetTable<CloudContact>().InsertAsync(cloudContact);
-        //    contactItems.Add(cloudContact);
-        //}
-
-        //private void submitButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    var cloudContact = new CloudContact { Text = nameTextBlock.Text };
-        //    InsertContactItem(cloudContact);
-        //}
+        }
     }
 }
