@@ -1,4 +1,5 @@
-﻿using System;
+﻿// using SQLite.Net.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,10 @@ namespace CloudContactApplication
 {
     public class Item
     {
-        [PrimaryKey, AutoIncrement];
+        //[PrimaryKey, AutoIncrement]
+        // public int id { get; set; }
+        public string itemName { get; set; }
+        public int itemQuantity { get; set; }
+        public double itemPrice { get; set; }
     }
 }
