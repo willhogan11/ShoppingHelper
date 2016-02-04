@@ -10,7 +10,6 @@ namespace ShoppingHelper
     public class Item
     {
         [PrimaryKey, AutoIncrement]
-
         public int id { get; set; }
         public string itemName { get; set; }
         public int itemQuantity { get; set; }

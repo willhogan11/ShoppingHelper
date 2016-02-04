@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using Windows.UI.Xaml.Controls;
@@ -29,14 +30,16 @@ namespace ShoppingHelper
         public ContactEntry()
         {
             this.InitializeComponent();
-            path = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "db.sqlite"); 
+            path = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "db.shoppingHelperSqlite"); 
             conn = new SQLite.Net.SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), path);
             conn.CreateTable<Item>();
 
+            closeDBconnection();
+
             // Write the path to the sqlite database to the output screen
-        #if DEBUG
+#if DEBUG
             Debug.WriteLine(path);
-        #endif
+#endif
         }
 
 
@@ -46,15 +49,18 @@ namespace ShoppingHelper
         // Clear each textBox after operations have been completed
         private void Add_Tapped(object sender, TappedRoutedEventArgs e)
         {
+            conn = new SQLite.Net.SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), path);
             var addItem = conn.Insert(new Item()
             {
                 itemName = itemTextBlock.Text, 
                 itemQuantity = Convert.ToInt32(quantityTextBlock.Text), 
                 itemPrice = Convert.ToDouble(priceTextBlock.Text)
             });
-            clearTextBoxes();
+            closeDBconnection();
 
+            clearTextBoxes();
         } // End Function
+
 
 
         // Function to clear TextBoxes, after an item has been added
@@ -67,7 +73,25 @@ namespace ShoppingHelper
         
         private void Show_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            
+            conn = new SQLite.Net.SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), path);
+
+            List<string> items = new List<string>();
+            var listItems = conn.Table<Item>();
+            String result = String.Empty;
+
+            foreach(var item in listItems)
+            {
+                result = string.Format("ItemNo: {0} Item: {1} Qty: {2} Price: €{3}c", item.id, 
+                                                                             item.itemName, 
+                                                                             item.itemQuantity, 
+                                                                             item.itemPrice);
+                items.Add(result);
+#if DEBUG
+                Debug.WriteLine(item); // Test output of Items in list
+#endif
+            }
+            retrieveData.DataContext = items;
+            closeDBconnection();
         }
 
         private void Edit_Tapped(object sender, TappedRoutedEventArgs e)
@@ -85,22 +109,18 @@ namespace ShoppingHelper
             Frame.Navigate(typeof(MainPage));
         }
 
+        private void Exit_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            // Is this really a requirement??
+            Windows.UI.Xaml.Application.Current.Exit();
+        }
 
-
-        // Set up for testing purposes, these dynamically show details as they are typed on screen 
-        //private void itemNameTextBlock_TextChanged(object sender, TextChangedEventArgs e)
-        //{
-        //    outputItemName.Text = itemTextBlock.Text;
-        //}
-
-        //private void itemQuantityTextBlock_TextChanged(object sender, TextChangedEventArgs e)
-        //{
-        //    outputItemQuantity.Text = quantityTextBlock.Text.ToString();
-        //}
-
-        //private void itemPriceTextBlock_TextChanged(object sender, TextChangedEventArgs e)
-        //{
-        //    outputItemPrice.Text = priceTextBlock.Text;
-        //}
+        // Close / Dispose the DB connections for each operation
+        private void closeDBconnection()
+        {
+            conn.Commit();
+            conn.Dispose();
+            conn.Close();
+        }
     }
 }
