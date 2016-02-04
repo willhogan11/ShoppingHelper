@@ -8,7 +8,7 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel HorizontalAlignment="Center" Width="300">
+        <StackPanel HorizontalAlignment="Center" Width="340">
             <TextBlock x:Name="headingTextBlock" 
                        FontSize="30"
                        Margin="0, 30, 0, 0"
@@ -34,7 +34,7 @@
                        Width="Auto" Height="250" ItemsSource="{Binding}" Margin="0 20 0 0"/>
 
             <!-- This Dynamically Creates a Item Review for the User -->
-            <TextBlock x:Name="outputItemName"
+                  <!--<TextBlock x:Name="outputItemName"
                        Margin="0, 20, 0, 0"
                        Height="Auto" />
             <TextBlock x:Name="outputItemQuantity"
@@ -42,9 +42,9 @@
                        Height="Auto" />
             <TextBlock x:Name="outputItemPrice"
                        Margin="0, 20, 0, 0"
-                       Height="Auto" />
+                       Height="Auto" />-->
             <!-- End -->
-            
+
         </StackPanel>
     </Grid>
     <Page.BottomAppBar>
@@ -54,7 +54,8 @@
                 <AppBarButton x:Name="Add" Label="Add" Icon="Add" Tapped="Add_Tapped" />
                 <AppBarButton x:Name="Edit" Label="Edit" Icon="Edit" Tapped="Edit_Tapped" />
                 <AppBarButton x:Name="Delete" Label="Delete" Icon="Delete" Tapped="Delete_Tapped" />
-                <AppBarButton x:Name="goBack" Label="Back" Icon="Back" Tapped="goBack_Tapped" />
+                <AppBarButton x:Name="Back" Label="Back" Icon="Back" Tapped="goBack_Tapped" />
+                <AppBarButton x:Name="Exit" Label="Close" Icon="ClosePane" Tapped="Exit_Tapped" />
             </StackPanel>
         </AppBar>
     </Page.BottomAppBar>
