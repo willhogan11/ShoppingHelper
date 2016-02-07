@@ -71,37 +71,49 @@ namespace ShoppingHelper
             priceTextBlock.Text = ""; 
         }
         
+
         private void Show_Tapped(object sender, TappedRoutedEventArgs e)
         {
             conn = new SQLite.Net.SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), path);
-
             List<string> items = new List<string>();
             var listItems = conn.Table<Item>();
-            String result = String.Empty;
+            string result = string.Empty;
 
-            foreach(var item in listItems)
+
+            foreach (var item in listItems)
             {
-                result = string.Format("ItemNo: {0} Item: {1} Qty: {2} Price: €{3}c", item.id, 
-                                                                             item.itemName, 
-                                                                             item.itemQuantity, 
-                                                                             item.itemPrice);
+                result = string.Format("ItemNo: {0} Item: {1} Qty: {2} Price: €{3}c", item.id,
+                                                                                item.itemName,
+                                                                                item.itemQuantity,
+                                                                                item.itemPrice);
                 items.Add(result);
 #if DEBUG
                 Debug.WriteLine(item); // Test output of Items in list
 #endif
             }
             retrieveData.DataContext = items;
+
+            selListBoxVal.Text = "";
             closeDBconnection();
-        }
-
-        private void Edit_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
         }
 
         private void Delete_Tapped(object sender, TappedRoutedEventArgs e)
         {
+            conn = new SQLite.Net.SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), path);
+            var listItems = conn.Table<Item>();
+            int selectedValue = retrieveData.SelectedIndex;
+            // var itemString = 
+            List<string> items = new List<string>();
 
+            foreach (var item in listItems)
+            {
+                if (item.id == selectedValue + 1)
+                {
+                    conn.Delete<Item>(item.id);
+                }
+                selListBoxVal.Text = "Record Deleted";
+            }
+            closeDBconnection();
         }
 
         private void goBack_Tapped(object sender, TappedRoutedEventArgs e)
