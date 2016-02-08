@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 
@@ -56,6 +57,7 @@ namespace ShoppingHelper
                 itemQuantity = Convert.ToInt32(quantityTextBlock.Text), 
                 itemPrice = Convert.ToDouble(priceTextBlock.Text)
             });
+            Show_Tapped(sender, e);
             closeDBconnection();
 
             clearTextBoxes();
@@ -97,24 +99,32 @@ namespace ShoppingHelper
             closeDBconnection();
         }
 
+
+
         private void Delete_Tapped(object sender, TappedRoutedEventArgs e)
         {
             conn = new SQLite.Net.SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), path);
+
             var listItems = conn.Table<Item>();
-            int selectedValue = retrieveData.SelectedIndex;
-            // var itemString = 
+
             List<string> items = new List<string>();
 
             foreach (var item in listItems)
             {
-                if (item.id == selectedValue + 1)
+                String compareResult = string.Format("ItemNo: {0} Item: {1} Qty: {2} Price: €{3}c", item.id, item.itemName, item.itemQuantity, item.itemPrice);
+
+                if (retrieveData.SelectedValue.Equals(compareResult))
                 {
                     conn.Delete<Item>(item.id);
+                    selListBoxVal.Text = "Record Deleted";
                 }
-                selListBoxVal.Text = "Record Deleted";
             }
+            Show_Tapped(sender, e); // Completes a Refresh / Asynchronous Call to the database that updates the Displayed listbox with Remaining items 
             closeDBconnection();
-        }
+
+        } //  End Delete_Tapped Function
+
+
 
         private void goBack_Tapped(object sender, TappedRoutedEventArgs e)
         {
