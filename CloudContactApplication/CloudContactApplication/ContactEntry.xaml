@@ -19,17 +19,14 @@
                      PlaceholderText="Item Name"
                      Padding="10"
                      Margin="0, 20, 0, 0" />
-                     <!--TextChanged="itemNameTextBlock_TextChanged"--> <!--Testing Purposes--> 
             <TextBox x:Name="quantityTextBlock"
                      PlaceholderText="Quantity"
                      Padding="10"
                      Margin="0, 10, 0, 0" />
-                     <!--TextChanged="itemQuantityTextBlock_TextChanged"--> <!--Testing Purposes-->
             <TextBox x:Name="priceTextBlock"
                      PlaceholderText="Price"
                      Padding="10"
                      Margin="0, 10, 0, 0" />
-                     <!--TextChanged="itemPriceTextBlock_TextChanged"--> <!--Testing Purposes-->
             <ListBox x:Name="retrieveData" HorizontalAlignment="Center" VerticalAlignment="Bottom"
                        Width="Auto" Height="200" ItemsSource="{Binding}" Margin="0 20 0 0" />
             <TextBlock x:Name="selListBoxVal" HorizontalAlignment="Center" Width="Auto" 
