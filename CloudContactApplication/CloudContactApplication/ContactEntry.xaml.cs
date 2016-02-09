@@ -36,11 +36,12 @@ namespace ShoppingHelper
             conn.CreateTable<Item>();
             closeDBconnection();
 
-// Write the path to the sqlite database to the output screen
-#if DEBUG
-            Debug.WriteLine(path);
-#endif
+            // Write the path to the sqlite database to the output screen
+            #if DEBUG
+                Debug.WriteLine(path);
+            #endif
         } // End contructor
+
 
 
         // --ADD AN ITEM--
@@ -81,17 +82,23 @@ namespace ShoppingHelper
             foreach (var item in listItems)
             {
                 result = string.Format("ItemNo: {0} Item: {1} Qty: {2} Price: €{3}c", item.id,
-                                                                                      item.itemName,
-                                                                                      item.itemQuantity,
-                                                                                      item.itemPrice);
+                                                                                        item.itemName,
+                                                                                        item.itemQuantity,
+                                                                                        item.itemPrice);
                 items.Add(result);
-#if DEBUG
-                Debug.WriteLine(item); // Test output of Items in list
-#endif
             }
+            if (items.Count == 0)
+            {
+                selListBoxVal.Text = "Your List is Empty!";
+            }
+            else if (items.Count > 0)
+            {
+                selListBoxVal.Text = "";
+            }
+            // selListBoxVal2.Text = "";
             retrieveData.DataContext = items;
-            selListBoxVal.Text = "";
             closeDBconnection();
+
         } // End Function
 
 
@@ -111,16 +118,15 @@ namespace ShoppingHelper
             List<string> items = new List<string>();
             foreach (var item in listItems)
             {
-                String compareResult = string.Format("ItemNo: {0} Item: {1} Qty: {2} Price: €{3}c", item.id, item.itemName, item.itemQuantity, item.itemPrice);
+                string compareResult = string.Format("ItemNo: {0} Item: {1} Qty: {2} Price: €{3}c", item.id, item.itemName, item.itemQuantity, item.itemPrice);
 
                 if (retrieveData.SelectedValue.Equals(compareResult))
                 {
                     conn.Delete<Item>(item.id);
-                    selListBoxVal.Text = "Record Deleted";
+                    selListBoxVal2.Text = "Item Deleted";
                 }
             }
             Show_Tapped(sender, e);
-            selListBoxVal.Text = "";
             closeDBconnection();
         } //  End Function
 
