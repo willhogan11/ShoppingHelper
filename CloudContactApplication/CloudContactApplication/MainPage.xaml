@@ -9,20 +9,6 @@
     Tapped="Page_Tapped">
 
     <Grid x:Name="LayoutRoot" Background="{StaticResource groceryBrush}">
-        <StackPanel VerticalAlignment="Center">
-            <Image x:Name="contactImage" 
-                Height="120"
-                Margin="0, -120, 0, 0" 
-                />
-            <!--Source="Images/contact.png"--> 
-            <Image x:Name="downArrowImage" 
-                Height="80"
-                Margin="20" />
-                <!--Source="Images/downArrow.png"-->
-            <Image x:Name="cloudImage" 
-                   Height="150" />
-            <!--Source="Images/cloud.png"--> 
-        </StackPanel>
         <StackPanel VerticalAlignment="Bottom"
                     Margin="0 0 0 40"
                     HorizontalAlignment="Center" >
@@ -31,7 +17,7 @@
                        FontFamily="Century Gothic"
                        FontSize="{StaticResource TextStyleExtraLargeFontSize}"
                        TextAlignment="Center"
-                       Text="Shopping Helper App" 
+                       Text="Shopping Helper" 
                        Width="320"/>
             <TextBlock x:Name="tapToBeginTextBlock" 
                        HorizontalAlignment="Center"

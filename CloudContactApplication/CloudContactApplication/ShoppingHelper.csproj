@@ -114,10 +114,6 @@
     <None Include="CloudContactApplication_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\cloud.png" />
-    <Content Include="Images\contact.png" />
-    <Content Include="Images\downArrow.png" />
-    <Content Include="Images\grocery.jpeg" />
     <Content Include="Images\grocery2.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />

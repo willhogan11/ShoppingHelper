@@ -37,14 +37,16 @@ namespace ShoppingHelper
             closeDBconnection();
 
             // Write the path to the sqlite database to the output screen
-            #if DEBUG
-                Debug.WriteLine(path);
+#if DEBUG
+            Debug.WriteLine(path);
             #endif
         } // End contructor
 
 
 
         // --ADD AN ITEM--
+        // Check to ensure that there is values in each textBox and deal with accordingly
+        // Create a Sqlite Database connection
         // Create a variable 'addItem' that holds an SQLite Insert statement
         // Set each instance variable in the Item class with values from each TextBox
         // Call the Show_Tapped function to Asynchronously update page
@@ -52,17 +54,37 @@ namespace ShoppingHelper
         // Clear each textBox after operations have been completed
         private void Add_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            dbConnection();
-            var addItem = conn.Insert(new Item()
-            {
-                itemName = itemTextBlock.Text, 
-                itemQuantity = Convert.ToInt32(quantityTextBlock.Text), 
-                itemPrice = Convert.ToDouble(priceTextBlock.Text)
-            });
+            selListBoxVal.Text = "";
+            string itmTxtBlck = itemTextBlock.Text.ToString();
+            string qtyTxtBlck = quantityTextBlock.Text.ToString();
+            string prTxtBlck = priceTextBlock.Text.ToString();
 
-            Show_Tapped(sender, e);
-            closeDBconnection();
-            clearTextBoxes();
+            try
+            {
+                if (itmTxtBlck.Equals("") || qtyTxtBlck.Equals("") || prTxtBlck.Equals(""))
+                {
+                    selListBoxVal.Text = "Enter a valid item!";
+                }
+                else
+                {
+                    dbConnection();
+                    var addItem = conn.Insert(new Item()
+                    {
+                        itemName = itemTextBlock.Text,
+                        itemQuantity = Convert.ToInt32(quantityTextBlock.Text),
+                        itemPrice = Convert.ToDouble(priceTextBlock.Text)
+                    });
+
+                    Show_Tapped(sender, e);
+                    closeDBconnection();
+                    clearTextBoxes();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
         } // End Function
 
 
@@ -95,7 +117,6 @@ namespace ShoppingHelper
             {
                 selListBoxVal.Text = "";
             }
-            // selListBoxVal2.Text = "";
             retrieveData.DataContext = items;
             closeDBconnection();
 
@@ -123,7 +144,7 @@ namespace ShoppingHelper
                 if (retrieveData.SelectedValue.Equals(compareResult))
                 {
                     conn.Delete<Item>(item.id);
-                    selListBoxVal2.Text = "Item Deleted";
+                    // selListBoxVal2.Text = "Item Deleted";
                 }
             }
             Show_Tapped(sender, e);
@@ -165,6 +186,16 @@ namespace ShoppingHelper
             itemTextBlock.Text = "";
             quantityTextBlock.Text = "";
             priceTextBlock.Text = "";
+        }
+
+        private void retrieveData_GotFocus(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            Delete.IsEnabled = true;
+        }
+
+        private void retrieveData_LostFocus(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            Delete.IsEnabled = false;
         }
 
     } // End ContactEntry : Page

@@ -6,7 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ShoppingHelper
-{
+{ 
+    // --Item Class--
+    // Bean class that holds all Item getters and setters functions
+    // Primary Key and Auto Increment facilities used in conjunction with Sqlite DB
     public class Item
     {
         [PrimaryKey, AutoIncrement]
