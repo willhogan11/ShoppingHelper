@@ -91,7 +91,7 @@ namespace ShoppingHelper
         // --SHOW / RETRIEVE ALL ITEMS--
         // Connect to the DB
         // Create a list and populate it with values from the Item table
-        // Display in ListBox
+        // Display in ListBox ALong with Item Count and Total Price
         // Close the DB Connection
         private void Show_Tapped(object sender, TappedRoutedEventArgs e)
         {
@@ -101,12 +101,15 @@ namespace ShoppingHelper
                 List<string> items = new List<string>();
                 var listItems = conn.Table<Item>();
                 string result = string.Empty;
+                double totalCost = 0;
 
                 foreach (var item in listItems)
                 {
                     result = string.Format("{0}     [Qty]: {1}     [Price]: €{2}c", item.itemName, item.itemQuantity, item.itemPrice);
                     items.Add(result);
+                    totalCost += Convert.ToDouble(item.itemPrice);
                 }
+
                 if (items.Count == 0)
                 {
                     selListBoxVal.Text = "Your List is Empty!";
@@ -117,15 +120,7 @@ namespace ShoppingHelper
                 }
                 retrieveData.DataContext = items;
                 selListBoxVal2.Text = ("Item Count: " + Convert.ToString(items.Count));
-
-
-                // WIP....
-                //double sum = 0.0;
-                //foreach (var item in retrieveData.Items)
-                //{
-                //    sum += Convert.ToDouble(item.ToString());
-                //    selListBoxVal.Text = Convert.ToString(sum);
-                //}
+                selListBoxVal.Text = ("Total Cost: €" + totalCost);
 
                 closeDBconnection();
             }
