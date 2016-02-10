@@ -37,15 +37,15 @@ namespace ShoppingHelper
             closeDBconnection();
 
             // Write the path to the sqlite database to the output screen
-#if DEBUG
-            Debug.WriteLine(path);
+            #if DEBUG
+                 Debug.WriteLine(path);
             #endif
         } // End contructor
 
 
 
         // --ADD AN ITEM--
-        // Check to ensure that there is values in each textBox and deal with accordingly
+        // Check to ensure that there is values in each textBox and that they are valid values, if not deal with accordingly
         // Create a Sqlite Database connection
         // Create a variable 'addItem' that holds an SQLite Insert statement
         // Set each instance variable in the Item class with values from each TextBox
@@ -55,13 +55,11 @@ namespace ShoppingHelper
         private void Add_Tapped(object sender, TappedRoutedEventArgs e)
         {
             selListBoxVal.Text = "";
-            string itmTxtBlck = itemTextBlock.Text.ToString();
-            string qtyTxtBlck = quantityTextBlock.Text.ToString();
-            string prTxtBlck = priceTextBlock.Text.ToString();
 
             try
             {
-                if (itmTxtBlck.Equals("") || qtyTxtBlck.Equals("") || prTxtBlck.Equals(""))
+                if (!IsPresent(itemTextBlock) || !IsPresent(quantityTextBlock) || !IsPresent(priceTextBlock) ||
+                    !IsDecimal(quantityTextBlock) || !IsDecimal(priceTextBlock))
                 {
                     selListBoxVal.Text = "Enter a valid item!";
                 }
@@ -87,8 +85,9 @@ namespace ShoppingHelper
 
         } // End Function
 
-
         
+
+
         // --SHOW / RETRIEVE ALL ITEMS--
         // Connect to the DB
         // Create a list and populate it with values from the Item table
@@ -103,10 +102,7 @@ namespace ShoppingHelper
 
             foreach (var item in listItems)
             {
-                result = string.Format("ItemNo: {0} Item: {1} Qty: {2} Price: €{3}c", item.id,
-                                                                                        item.itemName,
-                                                                                        item.itemQuantity,
-                                                                                        item.itemPrice);
+                result = string.Format("{0}     [Qty]: {1}     [Price]: €{2}c", item.itemName,item.itemQuantity, item.itemPrice);
                 items.Add(result);
             }
             if (items.Count == 0)
@@ -139,12 +135,11 @@ namespace ShoppingHelper
             List<string> items = new List<string>();
             foreach (var item in listItems)
             {
-                string compareResult = string.Format("ItemNo: {0} Item: {1} Qty: {2} Price: €{3}c", item.id, item.itemName, item.itemQuantity, item.itemPrice);
+                string compareResult = string.Format("{0}     [Qty]: {1}     [Price]: €{2}c", item.itemName, item.itemQuantity, item.itemPrice);
 
                 if (retrieveData.SelectedValue.Equals(compareResult))
                 {
                     conn.Delete<Item>(item.id);
-                    // selListBoxVal2.Text = "Item Deleted";
                 }
             }
             Show_Tapped(sender, e);
@@ -197,6 +192,33 @@ namespace ShoppingHelper
         {
             Delete.IsEnabled = false;
         }
+
+
+        // --Validation-- 
+        // Checks to ensure that only Numeric data is allowed in Qty and Price Fields, returns false if not
+        private bool IsDecimal(TextBox textBox)
+        {
+            try
+            {
+                Convert.ToDecimal(textBox.Text);
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+        }
+
+
+        // Checks to Ensure that all fields have data in them, returns false if not
+        private bool IsPresent(TextBox textBox)
+        {
+            if (textBox.Text == "")
+                return false;
+            else
+                return true;
+        }
+
 
     } // End ContactEntry : Page
 
