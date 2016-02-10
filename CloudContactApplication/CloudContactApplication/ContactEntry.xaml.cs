@@ -95,26 +95,44 @@ namespace ShoppingHelper
         // Close the DB Connection
         private void Show_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            dbConnection();
-            List<string> items = new List<string>();
-            var listItems = conn.Table<Item>();
-            string result = string.Empty;
+            try
+            {
+                dbConnection();
+                List<string> items = new List<string>();
+                var listItems = conn.Table<Item>();
+                string result = string.Empty;
 
-            foreach (var item in listItems)
-            {
-                result = string.Format("{0}     [Qty]: {1}     [Price]: €{2}c", item.itemName,item.itemQuantity, item.itemPrice);
-                items.Add(result);
+                foreach (var item in listItems)
+                {
+                    result = string.Format("{0}     [Qty]: {1}     [Price]: €{2}c", item.itemName, item.itemQuantity, item.itemPrice);
+                    items.Add(result);
+                }
+                if (items.Count == 0)
+                {
+                    selListBoxVal.Text = "Your List is Empty!";
+                }
+                else if (items.Count > 0)
+                {
+                    selListBoxVal.Text = "";
+                }
+                retrieveData.DataContext = items;
+                selListBoxVal2.Text = ("Item Count: " + Convert.ToString(items.Count));
+
+
+                // WIP....
+                //double sum = 0.0;
+                //foreach (var item in retrieveData.Items)
+                //{
+                //    sum += Convert.ToDouble(item.ToString());
+                //    selListBoxVal.Text = Convert.ToString(sum);
+                //}
+
+                closeDBconnection();
             }
-            if (items.Count == 0)
+            catch (Exception)
             {
-                selListBoxVal.Text = "Your List is Empty!";
+                throw;
             }
-            else if (items.Count > 0)
-            {
-                selListBoxVal.Text = "";
-            }
-            retrieveData.DataContext = items;
-            closeDBconnection();
 
         } // End Function
 
@@ -130,20 +148,27 @@ namespace ShoppingHelper
         // Close the DB Connection
         private void Delete_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            dbConnection();
-            var listItems = conn.Table<Item>();
-            List<string> items = new List<string>();
-            foreach (var item in listItems)
+            try
             {
-                string compareResult = string.Format("{0}     [Qty]: {1}     [Price]: €{2}c", item.itemName, item.itemQuantity, item.itemPrice);
-
-                if (retrieveData.SelectedValue.Equals(compareResult))
+                dbConnection();
+                var listItems = conn.Table<Item>();
+                List<string> items = new List<string>();
+                foreach (var item in listItems)
                 {
-                    conn.Delete<Item>(item.id);
+                    string compareResult = string.Format("{0}     [Qty]: {1}     [Price]: €{2}c", item.itemName, item.itemQuantity, item.itemPrice);
+
+                    if (retrieveData.SelectedValue.Equals(compareResult))
+                    {
+                        conn.Delete<Item>(item.id);
+                    }
                 }
+                Show_Tapped(sender, e);
+                closeDBconnection();
             }
-            Show_Tapped(sender, e);
-            closeDBconnection();
+            catch (Exception)
+            {
+                throw;
+            }
         } //  End Function
 
 
