@@ -7,8 +7,8 @@
     <ProjectGuid>{4301A242-A2C6-46A0-840D-C2AD1AE9E968}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CloudContactApplication</RootNamespace>
-    <AssemblyName>CloudContactApplication</AssemblyName>
+    <RootNamespace>ShoppingHelper</RootNamespace>
+    <AssemblyName>ShoppingHelper</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
@@ -98,8 +98,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ContactEntry.xaml.cs">
-      <DependentUpon>ContactEntry.xaml</DependentUpon>
+    <Compile Include="ItemsPage.xaml.cs">
+      <DependentUpon>ItemsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Item.cs" />
     <Compile Include="MainPage.xaml.cs">
@@ -129,7 +129,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="ContactEntry.xaml">
+    <Page Include="ItemsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
