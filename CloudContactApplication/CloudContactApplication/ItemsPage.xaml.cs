@@ -15,7 +15,7 @@ namespace ShoppingHelper
     /// </summary>
     /// 
 
-    public sealed partial class ContactEntry : Page
+    public sealed partial class ItemPage : Page
     {
         // Instance Variables that are required to Setup a path and a new sqlite Database connection
         private string path;
@@ -28,7 +28,7 @@ namespace ShoppingHelper
         // Assign a new Connection to the SQLite database
         // Create a table based on the 'Item' class in this project
         // Close the Database Connection
-        public ContactEntry()
+        public ItemPage()
         {
             this.InitializeComponent();
             path = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "db.shoppingHelperSqlite");

@@ -111,7 +111,7 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="CloudContactApplication_TemporaryKey.pfx" />
+    <None Include="ShoppingHelper_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\grocery2.jpg" />

@@ -17,7 +17,7 @@ namespace ShoppingHelper
 
         private void Page_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            Frame.Navigate(typeof(ContactEntry));
+            Frame.Navigate(typeof(ItemPage));
         }
     }
 }
