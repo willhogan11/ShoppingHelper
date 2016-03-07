@@ -10,22 +10,31 @@
 
     <Grid x:Name="LayoutRoot" Background="{StaticResource groceryBrush}">
         <StackPanel VerticalAlignment="Bottom"
-                    Margin="0 0 0 40"
+                    Margin="30,0,10,118"
                     HorizontalAlignment="Center" >
             <TextBlock x:Name="titleTextBlock" 
                        HorizontalAlignment="Center"
                        FontFamily="Century Gothic"
-                       FontSize="{StaticResource TextStyleExtraLargeFontSize}"
+                       FontSize="30"
                        TextAlignment="Center"
                        Text="Shopping Helper" 
-                       Width="320"/>
+                       Width="Auto" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+                <TextBlock.RenderTransform>
+                    <CompositeTransform Rotation="-10.000"/>
+                </TextBlock.RenderTransform>
+            </TextBlock>
             <TextBlock x:Name="tapToBeginTextBlock" 
                        HorizontalAlignment="Center"
                        FontFamily="Century Gothic"
                        Margin="0, 20, 0, 0"
                        FontSize="20"
+                       Width="Auto"
                        TextAlignment="Center"
-                       Text="Tap to begin..." />
+                       Text="Tap to begin..." RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" >
+                <TextBlock.RenderTransform>
+                    <CompositeTransform Rotation="-10.000"/>
+                </TextBlock.RenderTransform>
+            </TextBlock>
         </StackPanel>
     </Grid>
 </Page>
