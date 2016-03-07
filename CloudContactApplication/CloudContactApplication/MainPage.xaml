@@ -9,13 +9,40 @@
     Tapped="Page_Tapped">
 
     <Grid x:Name="LayoutRoot" Background="{StaticResource groceryBrush}">
-        <StackPanel VerticalAlignment="Bottom"
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="veryShortHeight">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowHeight="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="titleTextBlock.(TextBlock.FontSize)" Value="10"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="shortHeight">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowHeight="400"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="titleTextBlock.(TextBlock.FontSize)" Value="20"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="NormalHeight">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowHeight="600"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="titleTextBlock.(TextBlock.FontSize)" Value="30"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <StackPanel x:Name="sptextBlock" VerticalAlignment="Bottom"
                     Margin="30,0,10,118"
                     HorizontalAlignment="Center" >
             <TextBlock x:Name="titleTextBlock" 
                        HorizontalAlignment="Center"
                        FontFamily="Century Gothic"
-                       FontSize="30"
                        TextAlignment="Center"
                        Text="Shopping Helper" 
                        Width="Auto" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
@@ -26,8 +53,7 @@
             <TextBlock x:Name="tapToBeginTextBlock" 
                        HorizontalAlignment="Center"
                        FontFamily="Century Gothic"
-                       Margin="0, 20, 0, 0"
-                       FontSize="20"
+                       Margin="0, 20, 0, 0"                    
                        Width="Auto"
                        TextAlignment="Center"
                        Text="Tap to begin..." RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" >
