@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using Windows.UI.Core;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Navigation;
 
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -42,6 +45,45 @@ namespace ShoppingHelper
                 Debug.WriteLine(path);
             #endif
         } // End contructor
+
+
+
+        // Displays the System back button's Visibility to Visible
+        // If there is a page to go back to, then navigate back through the stack
+        // If not then the user is at the main first page. 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            Frame rootFrame = Window.Current.Content as Frame;
+            if (rootFrame.CanGoBack)
+            {
+                // Show UI in title bar if opted-in and in-app backstack is not empty.
+                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
+                    AppViewBackButtonVisibility.Visible;
+                SystemNavigationManager.GetForCurrentView().BackRequested += ItemPage_BackRequested;
+            }
+            else
+            {
+                // Remove the UI from the title bar if in-app back stack is empty.
+                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
+                    AppViewBackButtonVisibility.Collapsed;
+            }
+        }
+
+
+
+        private void ItemPage_BackRequested(object sender, BackRequestedEventArgs e)
+        {
+            Frame rootFrame = Window.Current.Content as Frame;
+            if (rootFrame == null)
+                return;
+
+            // Navigate back if possible, and if the event has not already been handled...
+            if (rootFrame.CanGoBack && e.Handled == false)
+            {
+                e.Handled = true;
+                rootFrame.GoBack();
+            }
+        }
 
 
 
@@ -193,6 +235,7 @@ namespace ShoppingHelper
         } //  End Function
 
 
+
         // DB connection function that holds the initialised value of the conn variable, complete with path and connection information
         private void dbConnection()
         {
@@ -200,11 +243,6 @@ namespace ShoppingHelper
         }
 
 
-        // Transfers the user back to th main page 
-        private void goBack_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(MainPage));
-        }
 
         // Exits the Application
         private void Exit_Tapped(object sender, TappedRoutedEventArgs e)
@@ -212,6 +250,8 @@ namespace ShoppingHelper
             // Is this really a requirement??
             Windows.UI.Xaml.Application.Current.Exit();
         }
+
+
 
         // Close / Dispose the DB connections for each operation
         private void closeDBconnection()
@@ -221,6 +261,7 @@ namespace ShoppingHelper
             conn.Close();
         }
 
+
         // Function to clear TextBoxes, after an item has been added
         private void clearTextBoxes()
         {
@@ -228,6 +269,7 @@ namespace ShoppingHelper
             quantityTextBlock.Text = "";
             priceTextBlock.Text = "";
         }
+
 
         private void retrieveData_GotFocus(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {

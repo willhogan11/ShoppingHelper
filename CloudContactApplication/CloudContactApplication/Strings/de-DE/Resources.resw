@@ -126,9 +126,6 @@
   <data name="uidAdd.Label" xml:space="preserve">
     <value>Zufuegen</value>
   </data>
-  <data name="uidBack.Label" xml:space="preserve">
-    <value>Zurueck</value>
-  </data>
   <data name="uidDelete.Label" xml:space="preserve">
     <value>Loeschen</value>
   </data>

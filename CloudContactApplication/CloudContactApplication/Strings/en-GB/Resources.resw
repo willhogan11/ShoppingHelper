@@ -126,9 +126,6 @@
   <data name="uidAdd.Label" xml:space="preserve">
     <value>Add</value>
   </data>
-  <data name="uidBack.Label" xml:space="preserve">
-    <value>Back</value>
-  </data>
   <data name="uidDelete.Label" xml:space="preserve">
     <value>Delete</value>
   </data>

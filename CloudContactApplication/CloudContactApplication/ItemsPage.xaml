@@ -41,7 +41,6 @@
                 <AppBarButton x:Name="Show" x:Uid="uidShow" Icon="Zoom" Tapped="Show_Tapped" />
                 <AppBarButton x:Name="Add" x:Uid="uidAdd" Icon="Add" Tapped="Add_Tapped" />
                 <AppBarButton x:Name="Delete" x:Uid="uidDelete" IsEnabled="False" Icon="Delete" Tapped="Delete_Tapped" />
-                <AppBarButton x:Name="Back" x:Uid="uidBack" Icon="Back" Tapped="goBack_Tapped" />
             </StackPanel>
         </AppBar>
     </Page.BottomAppBar>
