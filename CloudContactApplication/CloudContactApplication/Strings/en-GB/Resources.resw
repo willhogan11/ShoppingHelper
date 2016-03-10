@@ -129,6 +129,9 @@
   <data name="uidDelete.Label" xml:space="preserve">
     <value>Delete</value>
   </data>
+  <data name="uidDeleteAll.Label" xml:space="preserve">
+    <value>Delete All</value>
+  </data>
   <data name="uidHeadingTextBlock.Text" xml:space="preserve">
     <value>Enter, Search or Remove Items...</value>
   </data>

@@ -40,7 +40,8 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="Auto">
                 <AppBarButton x:Name="Show" x:Uid="uidShow" Icon="Zoom" Tapped="Show_Tapped" />
                 <AppBarButton x:Name="Add" x:Uid="uidAdd" Icon="Add" Tapped="Add_Tapped" />
-                <AppBarButton x:Name="Delete" x:Uid="uidDelete" IsEnabled="False" Icon="Delete" Tapped="Delete_Tapped" />
+                <AppBarButton x:Name="Delete" x:Uid="uidDelete" IsEnabled="False" Icon="Remove" Tapped="Delete_Tapped" />
+                <AppBarButton x:Name="DeleteAll" x:Uid="uidDeleteAll" IsEnabled="False" Icon="Delete" Tapped="DeleteAll_Tapped" />
             </StackPanel>
         </AppBar>
     </Page.BottomAppBar>

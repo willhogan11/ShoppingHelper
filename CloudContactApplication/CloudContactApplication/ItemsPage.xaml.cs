@@ -7,6 +7,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI.Popups;
 
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -157,7 +158,7 @@ namespace ShoppingHelper
 
                 foreach (var item in listItems)
                 {
-                    result = string.Format("{0}     [Qty]: {1}     [Price]: €{2}c", item.itemName, item.itemQuantity, item.itemPrice);
+                    result = string.Format("{0}     Qty: {1}     Price: €{2}c", item.itemName, item.itemQuantity, item.itemPrice);
                     items.Add(result);
                     totalCost += Convert.ToDouble(item.itemPrice);
                 }
@@ -218,7 +219,7 @@ namespace ShoppingHelper
                 List<string> items = new List<string>();
                 foreach (var item in listItems)
                 {
-                    string compareResult = string.Format("{0}     [Qty]: {1}     [Price]: €{2}c", item.itemName, item.itemQuantity, item.itemPrice);
+                    string compareResult = string.Format("{0}     Qty: {1}     Price: €{2}c", item.itemName, item.itemQuantity, item.itemPrice);
 
                     if (retrieveData.SelectedValue.Equals(compareResult))
                     {
@@ -274,11 +275,13 @@ namespace ShoppingHelper
         private void retrieveData_GotFocus(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             Delete.IsEnabled = true;
+            DeleteAll.IsEnabled = true;
         }
 
         private void retrieveData_LostFocus(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             Delete.IsEnabled = false;
+            DeleteAll.IsEnabled = false;
         }
 
 
@@ -305,6 +308,32 @@ namespace ShoppingHelper
                 return false;
             else
                 return true;
+        }
+
+
+        // DELETE ALL (W.I.P)
+        private async void DeleteAll_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            MessageDialog message = new MessageDialog("Are you Sure you want to remove all items?");
+            await message.ShowAsync();
+
+            try
+            {
+                dbConnection();
+                var listItems = conn.Table<Item>();
+                List<string> items = new List<string>();
+
+                foreach (var item in listItems)
+                {
+                    conn.Delete<Item>(item.id);
+                }
+                Show_Tapped(sender, e);
+                closeDBconnection();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
 
