@@ -117,11 +117,35 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Description" xml:space="preserve">
+    <value>An application that keeps track of Items, quantities and prices during your trip to the shops</value>
+  </data>
+  <data name="DisplayName" xml:space="preserve">
+    <value>Shopping Helper</value>
+  </data>
+  <data name="uidAdd.Label" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="uidBack.Label" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="uidDelete.Label" xml:space="preserve">
+    <value>Delete</value>
+  </data>
   <data name="uidHeadingTextBlock.Text" xml:space="preserve">
     <value>Enter, Search or Remove Items...</value>
   </data>
   <data name="uidItemTextBlock.PlaceholderText" xml:space="preserve">
     <value>Item Name</value>
+  </data>
+  <data name="uidPriceTextBlock.PlaceholderText" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="uidQuantityTextBlock.PlaceholderText" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="uidShow.Label" xml:space="preserve">
+    <value>Show All</value>
   </data>
   <data name="uidTapToBeginTextBlock.Text" xml:space="preserve">
     <value>Tap to Begin</value>

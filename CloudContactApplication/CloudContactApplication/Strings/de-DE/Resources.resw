@@ -117,18 +117,42 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Description" xml:space="preserve">
+    <value>Eine Anwedung die den Preis und die Anzhal ihrer Artikel verfolgt waehrend sie shoppen</value>
+  </data>
+  <data name="DisplayName" xml:space="preserve">
+    <value>Einkaufsassistent</value>
+  </data>
+  <data name="uidAdd.Label" xml:space="preserve">
+    <value>Zufuegen</value>
+  </data>
+  <data name="uidBack.Label" xml:space="preserve">
+    <value>Zurueck</value>
+  </data>
+  <data name="uidDelete.Label" xml:space="preserve">
+    <value>Loeschen</value>
+  </data>
   <data name="uidHeadingTextBlock.Text" xml:space="preserve">
-    <value>Eingeben, Suche oder Entfernen Artikel...</value>
+    <value>Enter, Suchen/Suche , Artikel Löschen</value>
   </data>
   <data name="uidItemTextBlock.PlaceholderText" xml:space="preserve">
-    <value>Artikelname</value>
+    <value>Artikel name</value>
+  </data>
+  <data name="uidPriceTextBlock.PlaceholderText" xml:space="preserve">
+    <value>Preis</value>
+  </data>
+  <data name="uidQuantityTextBlock.PlaceholderText" xml:space="preserve">
+    <value>Menge</value>
+  </data>
+  <data name="uidShow.Label" xml:space="preserve">
+    <value>Alles anzeigen</value>
   </data>
   <data name="uidTapToBeginTextBlock.Text" xml:space="preserve">
-    <value>Tippen Beginnen</value>
+    <value>Tap zum starten</value>
     <comment>German Translation of "Tap to Begin"</comment>
   </data>
   <data name="uidTitleTextBlock.Text" xml:space="preserve">
-    <value>Einkaufen Helfer</value>
+    <value>Einkaufsassistent</value>
     <comment>German Translation of "Shopping Helper"</comment>
   </data>
 </root>

@@ -36,9 +36,10 @@ namespace ShoppingHelper
             conn.CreateTable<Item>();
             closeDBconnection();
 
+
             // Write the path to the sqlite database to the output screen
             #if DEBUG
-                 Debug.WriteLine(path);
+                Debug.WriteLine(path);
             #endif
         } // End contructor
 
@@ -49,6 +50,7 @@ namespace ShoppingHelper
         // Create a Sqlite Database connection
         // Create a variable 'addItem' that holds an SQLite Insert statement
         // Set each instance variable in the Item class with values from each TextBox
+        // Display in that Regional language with use of Globalisation settings
         // Call the Show_Tapped function to Asynchronously update page
         // Close the DB Connection
         // Clear each textBox after operations have been completed
@@ -61,7 +63,14 @@ namespace ShoppingHelper
                 if (!IsPresent(itemTextBlock) || !IsPresent(quantityTextBlock) || !IsPresent(priceTextBlock) ||
                     !IsDecimal(quantityTextBlock) || !IsDecimal(priceTextBlock))
                 {
-                    selListBoxVal.Text = "Enter a valid item!";
+                    if (Language.Equals("de-DE"))
+                    {
+                        selListBoxVal.Text = "Gueltigen Artikel eingeben!";
+                    }
+                    else
+                    {
+                        selListBoxVal.Text = "Enter a valid item!";
+                    }
                 }
                 else
                 {
@@ -92,6 +101,7 @@ namespace ShoppingHelper
         // Connect to the DB
         // Create a list and populate it with values from the Item table
         // Display in ListBox ALong with Item Count and Total Price
+        // Display in that Regional language with use of Globalisation settings
         // Close the DB Connection
         private void Show_Tapped(object sender, TappedRoutedEventArgs e)
         {
@@ -112,16 +122,32 @@ namespace ShoppingHelper
 
                 if (items.Count == 0)
                 {
-                    selListBoxVal.Text = "Your List is Empty!";
+                    if (Language.Equals("de-DE"))
+                    {
+                        selListBoxVal.Text = "Ihre liste ist Lehr";
+                    }
+                    else
+                    {
+                        selListBoxVal.Text = "Your List is Empty!";
+                    }
                 }
                 else if (items.Count > 0)
                 {
                     selListBoxVal.Text = "";
                 }
                 retrieveData.DataContext = items;
-                selListBoxVal2.Text = ("Item Count: " + Convert.ToString(items.Count));
-                selListBoxVal.Text = ("Total Cost: €" + totalCost);
 
+                if (Language.Equals("de-DE"))
+                {
+                    selListBoxVal2.Text = ("Artikel Anzahl: " + Convert.ToString(items.Count));
+                    selListBoxVal.Text = ("Gesamt Summe: €" + totalCost);
+                }
+                else
+                {
+                    selListBoxVal2.Text = ("Item Count: " + Convert.ToString(items.Count));
+                    selListBoxVal.Text = ("Total Cost: €" + totalCost);
+                }
+                 
                 closeDBconnection();
             }
             catch (Exception)
