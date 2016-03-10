@@ -8,17 +8,18 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel HorizontalAlignment="Center" Width="Auto" Height="Auto" Padding="10"> 
+        <StackPanel HorizontalAlignment="Center" Width="Auto" Height="Auto" Padding="10">
             <TextBlock x:Name="headingTextBlock" 
+                       x:Uid="uidHeadingTextBlock"
                        FontSize="21"
                        Margin="0, 20, 0, 0"
-                       FontFamily="Century Gothic" 
-                       Text="Enter, Search or Remove Items..." />
+                       FontFamily="Century Gothic" />
             <TextBox x:Name="itemTextBlock"
-                     PlaceholderText="Item Name"
+                     x:Uid="uidItemTextBlock"
                      Padding="10"
                      Margin="0, 20, 0, 0" />
             <TextBox x:Name="quantityTextBlock"
+                     x:Uid="uidQuantityTextBlock"
                      PlaceholderText="Quantity"
                      Padding="10"
                      Margin="0, 10, 0, 0" />

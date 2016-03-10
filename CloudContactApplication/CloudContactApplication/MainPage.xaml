@@ -41,22 +41,23 @@
                     Margin="30,0,10,118"
                     HorizontalAlignment="Center" >
             <TextBlock x:Name="titleTextBlock" 
+                       x:Uid="uidTitleTextBlock"
                        HorizontalAlignment="Center"
                        FontFamily="Century Gothic"
                        TextAlignment="Center"
-                       Text="Shopping Helper" 
                        Width="Auto" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
                 <TextBlock.RenderTransform>
                     <CompositeTransform Rotation="-10.000"/>
                 </TextBlock.RenderTransform>
             </TextBlock>
             <TextBlock x:Name="tapToBeginTextBlock" 
+                       x:Uid="uidTapToBeginTextBlock"
                        HorizontalAlignment="Center"
                        FontFamily="Century Gothic"
                        Margin="0, 20, 0, 0"                    
                        Width="Auto"
                        TextAlignment="Center"
-                       Text="Tap to begin..." RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" >
+                       RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" >
                 <TextBlock.RenderTransform>
                     <CompositeTransform Rotation="-10.000"/>
                 </TextBlock.RenderTransform>
