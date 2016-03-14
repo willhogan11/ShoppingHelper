@@ -6,7 +6,8 @@
     RequestedTheme="Light">
 
     <Application.Resources>
-        <ImageBrush x:Key="groceryBrush" ImageSource="Images/grocery2.jpg" Stretch="None" />
+        <!--<ImageBrush x:Key="groceryBrush" ImageSource="Images/grocery2.jpg" Stretch="None" />-->
+        <ImageBrush x:Key="groceryBrush" ImageSource="Images/grocery2 - Copy.png" Stretch="None" />
     </Application.Resources>
   
 </Application>

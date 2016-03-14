@@ -207,7 +207,6 @@ namespace ShoppingHelper
         // Populate ListItems with values from the Item table
         // Use compareResult to store result that's checked in DB against the Selected Item Tapped in the ListBox
         // If there is a mtach Delete the item from the DB
-        // Inform user that record was deleted
         // Call the Show_Tapped function to Asynchronously update page
         // Close the DB Connection
         private void Delete_Tapped(object sender, TappedRoutedEventArgs e)
@@ -237,21 +236,45 @@ namespace ShoppingHelper
 
 
 
+        // DELETE ALL
+        // Connect to DB
+        // Populate ListItems with values from the Item table
+        // Upon clicking and highlighting the ListBox control, the Delete and Delete All buttons become active
+        // Remove all items from the application
+        // Inform user that all records were deleted
+        // Call the Show_Tapped function to Asynchronously update page
+        // Close the DB Connection
+        private async void DeleteAll_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            try
+            {
+                dbConnection();
+                var listItems = conn.Table<Item>();
+                List<string> items = new List<string>();
+
+                foreach (var item in listItems)
+                {
+                    conn.Delete<Item>(item.id);
+                }
+                Show_Tapped(sender, e);
+                closeDBconnection();
+
+                MessageDialog message = new MessageDialog("All Items Removed"); 
+                await message.ShowAsync();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
+
         // DB connection function that holds the initialised value of the conn variable, complete with path and connection information
         private void dbConnection()
         {
             conn = new SQLite.Net.SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), path);
         }
-
-
-
-        // Exits the Application
-        private void Exit_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            // Is this really a requirement??
-            Windows.UI.Xaml.Application.Current.Exit();
-        }
-
 
 
         // Close / Dispose the DB connections for each operation
@@ -308,32 +331,6 @@ namespace ShoppingHelper
                 return false;
             else
                 return true;
-        }
-
-
-        // DELETE ALL (W.I.P)
-        private async void DeleteAll_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            MessageDialog message = new MessageDialog("Are you Sure you want to remove all items?");
-            await message.ShowAsync();
-
-            try
-            {
-                dbConnection();
-                var listItems = conn.Table<Item>();
-                List<string> items = new List<string>();
-
-                foreach (var item in listItems)
-                {
-                    conn.Delete<Item>(item.id);
-                }
-                Show_Tapped(sender, e);
-                closeDBconnection();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
         }
 
 
