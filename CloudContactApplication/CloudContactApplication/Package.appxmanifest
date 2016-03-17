@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="6ebce10a-1d47-41a0-8787-492a6d1aaa05" Publisher="CN=william" Version="1.0.0.0" />
+  <Identity Name="21679WillHogan.ShoppingHelperApplication" Publisher="CN=5284A3AE-EDDE-47F3-9526-BA93E36D830D" Version="1.1.5.0" />
   <mp:PhoneIdentity PhoneProductId="6ebce10a-1d47-41a0-8787-492a6d1aaa05" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>Shopping Helper App</DisplayName>
-    <PublisherDisplayName>william</PublisherDisplayName>
+    <DisplayName>Shopping Helper Application</DisplayName>
+    <PublisherDisplayName>Will Hogan</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
@@ -16,10 +16,7 @@
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="ShoppingHelper.App">
       <uap:VisualElements DisplayName="ms-resources:DisplayName" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="ms-resources:Description" BackgroundColor="transparent">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" ShortName="Shopping Helper" Square310x310Logo="Assets\Square310x310Logo.png" Square71x71Logo="Assets\Square71x71Logo.png">
-          <uap:ShowNameOnTiles>
-            <uap:ShowOn Tile="square310x310Logo" />
-          </uap:ShowNameOnTiles>
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" ShortName="Shopping Helper" Square310x310Logo="Assets\Square310x310Logo.png">
         </uap:DefaultTile>
         <uap:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="transparent" />
         <uap:InitialRotationPreference>
