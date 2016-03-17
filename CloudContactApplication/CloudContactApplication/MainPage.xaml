@@ -16,7 +16,7 @@
                         <AdaptiveTrigger MinWindowHeight="0"/>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="titleTextBlock.(TextBlock.FontSize)" Value="10"/>
+                        <Setter Target="sptextBlock.Margin" Value="0, 0, 0, 30" />
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="shortHeight">
